@@ -1,6 +1,6 @@
 
 resource "azurerm_resource_group" "rg" {
-  name     = var.aks_resource_group_name
+  name     = var.vnet_resource_group_name
   location = var.location
 
   tags = {
@@ -26,8 +26,8 @@ resource "azurerm_virtual_network" "vnet" {
 
 resource "azurerm_subnet" "aks_subnet" {
   name                 = "aks_subnet"
-  resource_group_name  = "${azurerm_resource_group.test.name}"
-  virtual_network_name = "${azurerm_virtual_network.test.name}"
+  resource_group_name  = "${azurerm_resource_group.rg.name}"
+  virtual_network_name = "${azurerm_virtual_network.vnet.name}"
   address_prefix       = "10.0.1.0/24"
 
 

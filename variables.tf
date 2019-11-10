@@ -36,3 +36,7 @@ variable "prefix" {
 variable "environment" {
   
 }
+
+variable "vnet_resource_group_name" {
+  
+}
