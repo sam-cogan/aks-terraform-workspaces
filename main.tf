@@ -6,6 +6,7 @@ resource "azurerm_resource_group" "rg" {
   tags = {
     environment = var.environment
   }
+    depends_on = [null_resource.azureCLI]
 }
 
 resource "azurerm_virtual_network" "vnet" {
