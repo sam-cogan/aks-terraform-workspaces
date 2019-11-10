@@ -33,3 +33,6 @@ variable "email" {
 variable "prefix" {
   
 }
+variable "environment" {
+  
+}

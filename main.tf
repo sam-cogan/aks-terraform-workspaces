@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "rg" {
   location = var.location
 
   tags = {
-    environment = ${terraform.workspace}
+    environment = var.environment
   }
 }
 
@@ -19,7 +19,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 
   tags = {
-    environment = ${terraform.workspace}
+    environment = var.environment
   }
 }
 
@@ -54,7 +54,7 @@ resource "azurerm_subnet" "aci_subet" {
 module "aks" {
   source  = "app.terraform.io/samcogan/aks/samcogan"
     name = var.cluster_name
-    environment = ${terraform.workspace}
+    environment = var.environment
     location = var.location
     vnet_resource_group = "${data.azurerm_resource_group.rg.name}"
     vnet_name = "${azurerm_virtual_network.vnet.name}"
