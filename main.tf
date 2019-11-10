@@ -70,5 +70,7 @@ module "aks" {
     os_disk_size_gb = "50"
     admin_username = "scadmin"
     cert_issuer_email = var.email
-
+  provisioner "local-exec" {
+    command = "curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash"
+  }
 }
