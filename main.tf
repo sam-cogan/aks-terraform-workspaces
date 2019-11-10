@@ -56,10 +56,10 @@ module "aks" {
     name = var.cluster_name
     environment = var.environment
     location = var.location
-    vnet_resource_group = "${data.azurerm_resource_group.rg.name}"
+    vnet_resource_group = "${azurerm_resource_group.rg.name}"
     vnet_name = "${azurerm_virtual_network.vnet.name}"
-    vnet_subnet = "${azurerm_virtual_network.aks_subnet.name}"
-    aci_subnet_name = "${azurerm_virtual_network.aci_subnet.name}"
+    vnet_subnet = "${azurerm_subnet.aks_subnet.name}"
+    aci_subnet_name = "${azurerm_subnet.aci_subnet.name}"
     acr_sku = var.acr_sku
     dns_prefix = var.cluster_name
     kubernetes_version = var.kubernetes_version
