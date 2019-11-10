@@ -24,11 +24,19 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 
+resource "null_resource" "azureCLI" {
+
+ provisioner "local-exec" {
+    command = "curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash"
+  }
+}
+
 resource "azurerm_subnet" "aks_subnet" {
   name                 = "aks_subnet"
   resource_group_name  = "${azurerm_resource_group.rg.name}"
   virtual_network_name = "${azurerm_virtual_network.vnet.name}"
   address_prefix       = "10.0.1.0/24"
+  depends_on = null_resource.azureCLI
 
 
 
@@ -51,6 +59,7 @@ resource "azurerm_subnet" "aci_subnet" {
 }
 
 
+
 module "aks" {
   source  = "app.terraform.io/samcogan/aks/samcogan"
     name = var.cluster_name
@@ -70,7 +79,5 @@ module "aks" {
     os_disk_size_gb = "50"
     admin_username = "scadmin"
     cert_issuer_email = var.email
-  provisioner "local-exec" {
-    command = "curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash"
-  }
+ 
 }
