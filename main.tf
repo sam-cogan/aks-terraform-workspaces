@@ -63,12 +63,12 @@ module "aks" {
     acr_sku = var.acr_sku
     dns_prefix = var.cluster_name
     kubernetes_version = var.kubernetes_version
-    count = var.node_count
+    nodecount = var.node_count
     vm_size = var.vm_size
     max_pods = var.max_pods
     os_type = "Linux"
     os_disk_size_gb = "50"
     admin_username = "scadmin"
     cert_issuer_email = var.email
-    aci_subnet_name = "${azurerm_virtual_network.aci_subnet.name}"
+
 }
