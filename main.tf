@@ -25,7 +25,9 @@ resource "azurerm_virtual_network" "vnet" {
 
 
 resource "null_resource" "azureCLI" {
-
+  triggers {
+        build_number = "${timestamp()}"
+    }
  provisioner "local-exec" {
     command = "curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash"
   }
