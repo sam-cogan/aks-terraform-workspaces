@@ -34,7 +34,7 @@ resource "azurerm_subnet" "aks_subnet" {
 
 }
 
-resource "azurerm_subnet" "aci_subet" {
+resource "azurerm_subnet" "aci_subnet" {
     name           = "aci_subnet"
     address_prefix = "10.0.2.0/24"
   resource_group_name  = "${azurerm_resource_group.rg.name}"
