@@ -25,7 +25,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 
 resource "null_resource" "azureCLI" {
-  triggers {
+  triggers = {
         build_number = "${timestamp()}"
     }
  provisioner "local-exec" {
