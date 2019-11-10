@@ -29,3 +29,7 @@ variable "max_pods" {
 variable "email" {
   default = "mail@samcogan.com"
 }
+
+variable "prefix" {
+  
+}
